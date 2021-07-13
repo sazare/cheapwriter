@@ -1,0 +1,3 @@
+for making html in my commonlisp code.
+just simple ideas now.
+

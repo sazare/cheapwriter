@@ -1,2 +1,4 @@
 # cheapwriter
-simple document converter
+
+simple html/css  writer with sbcl.
+
