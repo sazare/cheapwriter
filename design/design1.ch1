@@ -1,0 +1,41 @@
+;(make-page 
+;  :title "A sample page"
+;  :conf (my-conf)
+;  :body (my-doc)
+;)
+;
+;(defconf my-conf ()
+;  (my-meta)
+;  (my-style)
+;)
+
+(defun my-doc ()
+  (let (d1 d2)
+    (setq d1 (make-div :line1 "これはすばらしい" :cname :ja))
+    (setq d2 (make-div :line2 "ファンタスティック" :cname :eja))
+
+    (make-body d1 d2 d1)
+  )
+)
+
+(defun make-body (&rest ds)
+  (loop with body = "<body>" for di in ds do
+    (setq body (format nil "~a ~a" body di))
+    finally (return (format nil "~a </body>" body))
+  )
+)
+
+
+;; usage1 (make-div :abb "hello")
+;; usage2 (make-div 'aaa "hello2")
+;; usage3 (make-div :xyz "good" :cname "boojum")
+;; usage4 (make-div :zzz "bad" :cname "stark")
+(defun make-div (id text &key (cname nil))
+  (let ((aid (intern (string id))))
+    (if cname (set aid (format nil "<div id=\"~a\" class=\"~a\">~a</div>" aid cname text))
+              (set aid (format nil "<div id=\"~a\">~a</div>" aid text)))
+  )
+)
+
+
+

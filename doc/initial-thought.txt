@@ -1,3 +1,5 @@
-for making html in my commonlisp code.
-just simple ideas now.
+PURPOSE 2021/07/25
+
+1. Programmable html
+
 
