@@ -4,18 +4,33 @@
 ;  :body (my-doc)
 ;)
 ;
-;(defconf my-conf ()
-;  (my-meta)
-;  (my-style)
-;)
 
-(defun my-doc ()
-  (let (d1 d2)
-    (setq d1 (make-div :line1 "これはすばらしい" :cname :ja))
-    (setq d2 (make-div :line2 "ファンタスティック" :cname :eja))
+(defun my-meta ()
+  "<meta charset=\"utf-8\">"
+)
 
-    (make-body d1 d2 d1)
+(defun my-style (file)
+  (format nil "<link rel=\"stylesheet\" href=\"~a\">" file)
+)
+
+(defun my-title (title)
+  (format nil "<title>~a</title>" title)
+)
+
+(defun my-head (title)
+  (format nil "<head>~a~a~a</head>"
+    (my-meta)
+    (my-style "sample.css")
+    (my-title title)
   )
+)
+
+(defun make-html (head body)
+  (format nil "<html>~a~a</html>" head body)
+)
+
+(defun my-page (head body)
+  (make-html head body)
 )
 
 (defun make-body (&rest ds)
@@ -37,5 +52,32 @@
   )
 )
 
+(defun my-doc (mytitle)
+  (let (d1 d2 html)
+    (my-head "CSSとHTMLの例")
+    (setq d1 (make-div :line1 "これはすばらしい" :cname :ja))
+    (setq d2 (make-div :line2 "ファンタスティック" :cname :eja))
+
+    (setq html (my-page 
+                  (my-head mytitle)
+                  (make-body d1 d2 d1)
+               )
+    )
+    (remove #\" html)
+  )
+)
+
+
+(defun writeafile (fname objects)
+  (with-open-file (out fname
+      :direction :output
+      :if-exists :supersede)
+
+    (format out objects)
+  )
+)
+
+(defparameter p1 (my-doc "CSSとHTMLの例"))
+(writeafile "my.html" p1)
 
 

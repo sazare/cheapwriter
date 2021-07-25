@@ -1,0 +1,14 @@
+.animal{
+  color: blue;
+  border: 2px solid black;
+}
+
+#objA{
+  color: red;
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+p {
+  color: green;
+}
