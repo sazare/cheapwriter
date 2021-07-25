@@ -63,7 +63,7 @@
                   (make-body d1 d2 d1)
                )
     )
-    (remove #\" html)
+    html
   )
 )
 
