@@ -1,0 +1,24 @@
+1 primitives
+
+(tag attr* elem*)
+
+2.sample https://yurusports.com 
+
+(setq meta-utf-8 (meta :http-equiv "content-type" :content "text/html; charset=UTF-8"))
+(setq hd (head (meta :charset "UTF-8" meta-utf-8)
+               (title "世界ゆるスポーツ協会)
+               (meta :name "viewport" :content "width=device-width")
+               (link :rel "profile"   :href "http://gmpg.org/xfn/11")
+               (link :rel "pingback"  :href "https://yurusports.com/xmlrpc.php")
+
+    (comment (if (lt IE 9) ;; "[if lt IE 9]"
+    	"<script src="https://yurusports.com/wp-content/themes/yuru/js/html5.js"></script>"
+    	)  ;;"<![endif]") 
+
+    ;; <!-- All in One SEO Pack 2.3.11.4 by Michael Torbert of Semper Fi Web Design[155,172] -->
+    (script (function () { 
+document.documentElement.className='js'})();
+)
+
+むずかしいな
+
