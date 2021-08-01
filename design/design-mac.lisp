@@ -1,5 +1,11 @@
 ;; a sample code
 
+;; if pp? is t or nil, append ~% or none
+;; (format nil "~:[~;~%~]"  pp?)
+
+;(defparameter pp? nil)
+(defparameter pp? t)
+
 ;; utility 
 (defun writeafile (fname objects)
   (with-open-file (out fname
@@ -9,6 +15,7 @@
     (format out objects)
   )
 )
+
 
 ;; primitives
 (defun attributes (attrs)
@@ -24,13 +31,13 @@
 ;; pattern <tag a=b c=d ...>f* g* h*</tag>
 (defun tag (name attrs &rest contents) 
   (let ((ats (attributes attrs)))
-    (format nil "<~a~a>~{~a ~}</~a>" name ats contents name)
+    (format nil "<~a~a>~{~a ~}</~a>~:[~;~%~]" name ats contents name pp?)
   )
 )
 
 (defun tagn (name attrs contents)
   (let ((ats (attributes attrs)))
-    (format nil "<~a~a>~{~a ~}</~a>" name ats contents name)
+    (format nil "<~a~a>~{~a ~}</~a>~:[~;~%~]" name ats contents name pp?)
   )
 )
 
@@ -42,7 +49,7 @@
 
 ;; pattern: <tag a=b c=d ...> 
 (defun tag1 (name attrs)
-  (format nil "<~a~a/>" name (attributes attrs))
+  (format nil "<~a~a/>~:[~;~%~]" name (attributes attrs) pp?)
 )
 
 
