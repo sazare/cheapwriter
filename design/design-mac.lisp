@@ -1,80 +1,10 @@
 ;; a sample code
 
-;; if pp? is t or nil, append ~% or none
-;; (format nil "~:[~;~%~]"  pp?)
-
-;(defparameter pp? nil)
-(defparameter pp? t)
-
-;; utility 
-(defun writeafile (fname objects)
-  (with-open-file (out fname
-      :direction :output
-      :if-exists :supersede)
-
-    (format out objects)
-  )
-)
+(load "html.lisp")
 
 
-;; primitives
-(defun attributes (attrs)
-  (loop with mm = ""
-    for np on attrs by #'cddr do
-      (setq mm (format nil "~a ~a=\"~a\"" mm (car np)(cadr np)))
-    finally
-      (return mm)
-  )
-)
+;; my page definition
 
-;; tag layer
-;; pattern <tag a=b c=d ...>f* g* h*</tag>
-(defun tag (name attrs &rest contents) 
-  (let ((ats (attributes attrs)))
-    (format nil "<~a~a>~{~a ~}</~a>~:[~;~%~]" name ats contents name pp?)
-  )
-)
-
-(defun tagn (name attrs contents)
-  (let ((ats (attributes attrs)))
-    (format nil "<~a~a>~{~a ~}</~a>~:[~;~%~]" name ats contents name pp?)
-  )
-)
-
-;<div class="foo" id="Neko">alphabeta</div>
-(tag :div '(:class "foo" :id "Neko") "alphabeta")
-(tag :div '(:class "foo" :id "Neko") "alphabeta" "<p>hello</>")
-
-(tagn :div '(:class "foo" :id "Neko") '("alphabeta" "<p>hello</>"))
-
-;; pattern: <tag a=b c=d ...> 
-(defun tag1 (name attrs)
-  (format nil "<~a~a/>~:[~;~%~]" name (attributes attrs) pp?)
-)
-
-
-;; HTML layer
-
-(defun meta (&rest attrs)
-  (tag1 :meta attrs)
-)
-
-(defun link (&rest attrs)
-  (tag1 :link attrs)
-)
-
-;<meta charset="UTF-8">
-;<meta http-equiv="X-UA-Compatible" content="IE=edge">
-;<meta name="format-detection" content="telephone=no">
-;<meta name="viewport" content="width=device-width">
-(meta :charset "UTF-8")
-(meta :http-equiv "X-UA-Compatible" :content "IE=edge")
-(meta :name "format-detection" :content "telephone=no")
-(meta :name "viewport" :content "width device-width")
-(meta :name "viewport" :content "width device-width")
-
-
-;;  user layer lower
 (defun my-utf8 ()
   (meta :charset "utf-8")
 )
