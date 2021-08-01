@@ -2,6 +2,8 @@
 
 (load "html.lisp")
 
+(defparameter pp? nil)
+;(defparameter pp? t)
 
 ;; my page definition
 

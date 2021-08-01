@@ -1,0 +1,8 @@
+tag.lisp < html.lisp is the framework of html
+
+1. pp? make html pretty or not
+2. use it as design-mac.lisp not tab.lisp
+
+
+next, try more complex html
+
