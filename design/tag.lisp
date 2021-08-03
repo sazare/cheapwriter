@@ -42,3 +42,8 @@
   (format nil "<~a~a/>~:[~;~%~]" name (attributes attrs) pp?)
 )
 
+
+;;; may be wanted 
+;(set-attr tag :id "abc")
+;; tag の idを"abc"にする
+

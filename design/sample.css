@@ -3,10 +3,26 @@
   border: 2px solid black;
 }
 
-#line1 {
-  color: red;
-  background-color: yellow;
+#LINE1 {
+  color: cyan;
+  background-color: violet;
   border: 1px solid black;
+}
+#LINE2 {
+  color: red;
+  background-color: lightgreen;
+  border: 1px solid black;
+}
+
+#LINE3 {
+  color: orange;
+  background-color: green;
+  border: 1px solid red;
+}
+#LINE5 {
+  color: blue;
+  background-color: yellow;
+  border: 1px solid blue;
 }
 
 p {

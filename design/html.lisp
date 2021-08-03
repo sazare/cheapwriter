@@ -8,7 +8,7 @@
       :direction :output
       :if-exists :supersede)
 
-    (format out objects)
+    (format out "<!DOCTYPE html>~%~a" objects)
   )
 )
 
@@ -33,4 +33,21 @@
 (meta :name "viewport" :content "width device-width")
 (meta :name "viewport" :content "width device-width")
 
+;; other html tags
+;;; these functions has no &rest
+(defun span (id attrs text)
+  (tag :span (append (list :id id) attrs) text)
+)
+
+(defun div (id attrs text)
+  (tag :div (append (list :id id) attrs) text)
+)
+
+(defun divn (id attrs texts)
+  (tagn :div (append (list :id id) attrs) texts)
+)
+
+;(defun p (conts &rest attrs)
+;  (tag :p attrs conts)
+;)
 
